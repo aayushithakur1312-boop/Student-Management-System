@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple student management system">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Student records</p>
+        <h1>Student Management System</h1>
+        <p class="subtitle">Add, search, update, and remove student information.</p>
+      </div>
+      <div class="total-card" aria-live="polite">
+        <span id="studentCount">0</span>
+        <small>Total students</small>
+      </div>
+    </header>
+
+    <section class="card" aria-labelledby="form-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Manage records</p>
+          <h2 id="form-title">Add student</h2>
+        </div>
+        <span id="formMode" class="status-badge">New record</span>
+      </div>
+
+      <form id="studentForm" novalidate>
+        <div class="form-grid">
+          <label>
+            Student ID
+            <input id="studentId" name="studentId" type="text" placeholder="e.g. S101" required>
+          </label>
+          <label>
+            Full name
+            <input id="name" name="name" type="text" placeholder="Enter full name" required>
+          </label>
+          <label>
+            Age
+            <input id="age" name="age" type="number" min="1" max="120" placeholder="e.g. 20" required>
+          </label>
+          <label>
+            Course
+            <input id="course" name="course" type="text" placeholder="e.g. B.Tech CSE" required>
+          </label>
+          <label>
+            Email
+            <input id="email" name="email" type="email" placeholder="student@example.com" required>
+          </label>
+          <label>
+            Phone number
+            <input id="phone" name="phone" type="tel" placeholder="10-digit phone number" required>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="button primary" type="submit" id="saveButton">Add student</button>
+          <button class="button secondary hidden" type="button" id="cancelButton">Cancel edit</button>
+        </div>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="list-title">
+      <div class="list-toolbar">
+        <div>
+          <p class="eyebrow">Directory</p>
+          <h2 id="list-title">All students</h2>
+        </div>
+        <label class="search-box">
+          <span class="sr-only">Search students by ID, name, or course</span>
+          <input id="searchInput" type="search" placeholder="Search students..." autocomplete="off">
+        </label>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Course</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th class="actions-column">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyState" class="empty-state">
+        <strong>No student records yet</strong>
+        <span>Add your first student using the form above.</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
